@@ -4,10 +4,14 @@ import { useController } from 'react-hook-form';
 import { CustInput } from '../cust-input/CustInput';
 
 export const ControlledInputGroup = React.forwardRef(({ name, control, ...rest }, ref) => {
-    const { field } = useController({
+    const { field, fieldState } = useController({
         name,
         control,
-        // defaultValue: "",
+        defaultValue: "",
+        rules: {
+            required: 'This is required',
+            minLength: { value: 4, message: 'Minimum length should be 4' },
+        }
     });
 
     return (
