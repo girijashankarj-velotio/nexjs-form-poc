@@ -1,13 +1,13 @@
 "use client"
 
-import { useForm, Controller } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import {
     FormControl,
     FormLabel,
-    InputGroup,
+    HStack,
 } from '@chakra-ui/react';
 import { CustButton } from '../cust-button/CustButton';
-import { CustInput } from '../cust-input/CustInput';
+import { ControlledInputGroup } from '../controlled-input-group/ControlledInputGroup';
 
 export const CustForm = () => {
     const { control, handleSubmit, reset } = useForm();
@@ -20,35 +20,18 @@ export const CustForm = () => {
         <form onSubmit={handleSubmit(onSubmit)}>
             <FormControl>
                 <FormLabel>Email</FormLabel>
-                <Controller
-                    name="email"
-                    control={control}
-                    defaultValue=""
-                    render={({ field }) => (
-                        <InputGroup>
-                            <CustInput {...field} type="email" placeholder="Enter your email" />
-                        </InputGroup>
-                    )}
-                />
+                <ControlledInputGroup control={control} name="email" type="email" placeholder="Enter your email" />
             </FormControl>
 
             <FormControl mt={4}>
                 <FormLabel>Password</FormLabel>
-                <Controller
-                    name="password"
-                    control={control}
-                    defaultValue=""
-                    render={({ field }) => (
-                        <InputGroup>
-                            <CustInput {...field} type="password" placeholder="Enter your password" />
-                        </InputGroup>
-                    )}
-                />
+                <ControlledInputGroup control={control} name="password" type="password" placeholder="Enter your password" />
             </FormControl>
 
-            <CustButton colorScheme="teal" mt={4} type="submit" label="Login" />
-
-            <CustButton colorScheme="gray" mt={4} ml={2} label="Clear" onClick={() => reset()} />
+            <HStack spacing={8} justifyContent='space-around'>
+                <CustButton variant="solid" colorScheme="red" mt={4} type="submit" label="Login" />
+                <CustButton variant="outline" colorScheme="red" mt={4} ml={2} label="Clear" onClick={() => reset()} />
+            </HStack>
         </form>
     );
 };
