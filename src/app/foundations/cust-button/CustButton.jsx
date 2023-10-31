@@ -1,7 +1,7 @@
 import { Button, MenuIcon, PopoverArrow } from '@chakra-ui/react';
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ChevronRightIcon } from '@chakra-ui/icons';
+// import { ChevronRightIcon } from '@chakra-ui/icons';
 // import './button.css';
 
 /**
@@ -10,7 +10,7 @@ import { ChevronRightIcon } from '@chakra-ui/icons';
 export const CustButton = ({ colorScheme, variant, size, label, ...props }) => {
     return (
         <Button
-            leftIcon={<ChevronRightIcon />}
+            // leftIcon={<ChevronRightIcon />}
             colorScheme={colorScheme}
             variant={variant}
             size={size}
